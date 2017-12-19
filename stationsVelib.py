@@ -1,12 +1,15 @@
 import requests
-<<<<<<< HEAD
 import json
 
-r=requests.get("https://data.toulouse-metropole.fr/api/records/1.0/search/?dataset=velo-toulouse&lang=fr&geofilter.distance=43.600470%2C+1.445672%2C+750")
-print(r.content)
-=======
+r=requests.get("https://api.jcdecaux.com/vls/v1/stations?contract=Toulouse&apiKey=7a6f8095c87666e94af38a52189bdf19fd65ecfb")
+data = r.json()
+dataFiltrer=[]
+for x in data:
+    if x["available_bikes"] < 5:
+        dataFiltrer.append(x)
 
-r=requests.get("")
->>>>>>> master
+print(json.dumps(dataFiltrer, indent = 4))
+
+
 
 # API KEY = 7a6f8095c87666e94af38a52189bdf19fd65ecfb
